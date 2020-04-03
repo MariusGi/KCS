@@ -7,37 +7,42 @@
 </head>
 
 <body>
+
     <h1>Media testing</h1>
-    <p>Nuotrauka, video, garsas, youtube, zemelapiai</p>
+    <p>Nuotrauka, video, garsas, youtube, zemelapi</p>
+
     <hr>
+
     <table border="1">
         <tr>
-            <th colspan="3">Pavadinimas1</th>
-<!--            <th>Pavadinimas2</th>-->
-<!--            <th>Pavadinimas3</th>-->
-            <th>Pavadinimas4</th>
-            <td rowspan="2">Lempa</td>
+            <th>Juokelis</th>
+            <th>Katia</th>
+            <th colspan="2">Katia</th>
+            <!-- <th>Tulikinis</th> -->
+            <th rowspan="2">Lempa</th>
         </tr>
         <tr>
             <td>
-                <img src="../1HTML1/Tabby_cat_with_blue_eyes-3336579.jpg" alt="Meme programmer joke" title="Meme programmer joke" width="200">
+                <img src="../1HTML1/foto.jpg" alt="Meme programmer joke" title="Meme programmer joke" width="200">
                 <p><small>Nuotrauka</small></p>
             </td>
             <td>
-                <!--figcaption -->
+                <!-- figcaption -->
                 <figure>
-                    <img src="Tabby_cat_with_blue_eyes-3336579.jpg" alt="..." title="..." width="200">
+                    <img src="./cat.png" alt="Kate" width="200">
                     <figcaption>Nuotrauka</figcaption>
                 </figure>
             </td>
             <td>
-                <img src="assets/images/Tabby_cat_with_blue_eyes-3336579.jpg" alt="..." title="..." width="200">
+                <img src="assets/images/cat.png" alt="Kate" width="200" >
             </td>
             <td>
-                <img src="https://cdn.pixabay.com/photo/2020/03/26/15/06/scotland-4970689_1280.jpg" alt="..." title="..." width="200">
+                <img src="https://cdn.pixabay.com/photo/2020/03/27/17/03/shopping-4974313_960_720.jpg" alt="Toilet papper" width="200">
             </td>
         </tr>
     </table>
+
+    <!-- sukurti lentele. dvi eilutes po 4 stulpelius. pirmosios eilutes stulpeliai yra <th>. Ijunkite lentelei remeli -->
     <br>
     <br>
     <br>
@@ -46,67 +51,63 @@
             <th>Video is kompiuterio</th>
             <th>Video is interneto</th>
             <th>Audio is kompiuterio</th>
-            <th>Google maps</th>
+            <th>Google zemelapis</th>
         </tr>
         <tr>
             <td>
                 <video src="assets/video/video.ogg" width="200" controls></video>
             </td>
             <td>
-                <iframe width="200" src="https://www.youtube.com/embed/ZkcO9beX4bw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="200" src="https://www.youtube.com/embed/7DUKPsyzx0E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </td>
             <td>
                 <audio src="assets/audio/audio.mp3" controls></audio>
             </td>
             <td>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.486303597605!2d25.20233722942549!3d54.731581470404464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd96d87c1d0b6d%3A0x399f0515699a0cff!2sApelsinu%20pieva!5e0!3m2!1sen!2slt!4v1585934799178!5m2!1sen!2slt" width="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2294.775780350581!2d23.925187351618224!3d54.88930476562441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e71f30d8cd391b%3A0x1519404ea62060c7!2sKaunas%20Coding%20School%20-%20programavimo%20kursai!5e0!3m2!1slt!2slt!4v1585934800635!5m2!1slt!2slt" width="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </td>
         </tr>
     </table>
     <br>
     <br>
     <br>
-<!--    <p>-->
+    <!-- <p> -->
     <form>
         <fieldset>
-            <legend>Asmeninė informacija</legend>
-
+            <legend>Asmenine informacija</legend>
             <label for="vardas">Vardas</label>
-            <input type="text" id="vardas" placeholder="Įveskite savo vardą">
-
-            <input type="email" placeholder="Įveskite el. pašto adresą" required>
-            <input type="password" placeholder="Įveskite slaptažodį" required>
+            <input type="text" id="vardas" placeholder="Iveskite savo varda">
+            <input type="email" placeholder="Iveskite el pasto adresa" required>
+            <input type="password" placeholder="Iveskite slaptazodis" required>
             <input type="text" value="2020-04-03" readonly>
             <input type="date">
 
-            <input type="radio" id="vyras" name="lytis">
+            <input type="radio" id="vyras" name="lytis" value="vyras">
             <label for="vyras">Vyras</label>
-
             <input type="radio" id="moteris" name="lytis">
             <label for="moteris">Moteris</label>
+            <input type="radio" id="nesakysiu" name="lytis">
+            <label for="nesakysiu">Nenurodysiu</label>
 
-            <input type="radio" id="nenurodysiu" name="lytis">
-            <label for="nenurodysiu">Nenurodysiu</label>
-
-            <input type="checkbox" name="plaukimas" id="plaukimas">
+            <input type="checkbox" id="plaukimas" name="plaukimas">
             <label for="plaukimas">Plaukimas</label>
 
-            <input type="checkbox" name="gulejimas" id="gulejimas">
+            <input type="checkbox" id="gulejimas" name="gulejimas">
             <label for="gulejimas">Gulejimas</label>
 
-            <input type="checkbox" name="begiojimas" id="begiojimas">
-            <label for="begiojimas">Begiojimas</label>
+            <input type="checkbox" id="valgymas" name="valgymas">
+            <label for="valgymas">Valgymas</label>
         </fieldset>
         <fieldset>
             <legend>Vietove</legend>
             <select>
-                <option>--Pasirinkite miestą--</option>
+                <option>--Pasirinkite miesta--</option>
                 <option>Kaunas</option>
                 <option>Vilnius</option>
                 <option>Oslas</option>
             </select>
         </fieldset>
-        <input type="submit" value="Siųsti">
+        <input type="submit" value="Siusti">
     </form>
 <!--    </p>-->
 </body>
