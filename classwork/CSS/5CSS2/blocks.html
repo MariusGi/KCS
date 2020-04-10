@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 blocks</title>
+    <style>
+        .main-content {
+            display: inline-block;
+            border: 2px dotted black;
+            width: 100%;
+        }
+
+        .main-content__item {
+            width: 24%;
+            height: 200px;
+            background-color: red;
+            display: inherit;
+        }
+
+        .main-content__item--green {
+	       background-color: green;
+        }
+
+        .main-content__item--moved {
+            position: relative;
+            top: 50px;
+            right: -50px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .main-content__item {
+                width: 100%;
+            }
+
+            .main-content__item--moved {
+                position: static;
+            }
+
+            .main-content__item:not(:last-child) {
+                margin: 0 0 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="main-content__item">One</div>
+        <div class="main-content__item main-content__item--green main-content__item--moved">Two</div>
+        <div class="main-content__item">Three</div>
+        <div class="main-content__item">Four</div>
+    </div>
+</body>
+</html>

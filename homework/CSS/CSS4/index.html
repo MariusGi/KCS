@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAMŲ DARBAS CSS4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <style>
+        /* RESET */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* END OF RESET */
+        body {
+            font-family: 'Source Code Pro', monospace;
+        }
+        footer {
+            width: 620px;
+            text-align: center;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            border: 4px double black;
+        }
+        .nav-menu {
+            text-transform: uppercase;
+            border-top: 2px solid black;
+            border-bottom: 1px solid black;
+            margin: 20px 0;
+            padding: 15px 30px;
+        }
+        .nav-menu a {
+            padding: 0 10px;
+        }
+        .nav-menu > a:hover {
+            color: #E5A2A0;
+        }
+        .image-piano-wrapper img{
+            width: 100%;
+        }
+        .active {
+            color: #E5A2A0;
+        }
+
+        @media only screen and (max-width: 767px) {
+            footer {
+                width: 100%;
+            }
+            .nav-menu {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <header>
+            <img src="https://github.com/zigmantasvcs/resources/blob/master/page%20task/logo.gif?raw=true"
+            alt="Analogo specialistai"
+            title="Analogo specialistai">
+        </header>
+        <nav class="nav-menu">
+            <a class="active" href="#">Pagrindinis</a>
+            <a href="#">Pardavimas</a>
+            <a href="#">Remontas</a>
+            <a href="#">Apie</a>
+            <a href="#">Kontaktai</a>
+        </nav>
+        <div class="image-piano-wrapper">
+            <img src="https://github.com/zigmantasvcs/resources/blob/master/page%20task/keys.jpg?raw=true"
+                 alt="Pianinai"
+                 title="Pianinai">
+        </div>
+        <footer>
+            <p>Mes specializuojamės klasikinių klaviatūrų, ypač "Fender Rhodes", Wurlitzer EP200 ir Hohner Clavinet, pardavimu ir taisymu.</p>
+        </footer>
+    </div>
+</body>
+</html>

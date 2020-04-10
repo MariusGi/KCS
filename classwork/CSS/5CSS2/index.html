@@ -1,12 +1,156 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="ne">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>CSS2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Anton', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body div {
+
+        }
+
+        #main-top-content {
+            background-color: yellow;
+/*            width: 150px;*/
+            text-align: center;
+            margin: 0 auto 10px auto;
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
+
+        span.font-weight {
+            font-weight: 100;
+        }
+
+        .font-style {
+            font-style: italic;
+        }
+
+
+        .all-letters-uppercase {
+            text-transform: uppercase;
+        }
+
+        .text-decoration {
+            text-decoration: underline;
+        }
+
+        .line-height {
+            line-height: 50px;
+        }
+
+        #main-middle-content {
+/*            margin: 100px 0 0 0;*/
+            margin-top: 100px;
+        }
+
+        div#main-middle-content p.first-letter::first-letter {
+            font-size: 40px;
+            text-transform: uppercase;
+        }
+
+        .product > span {
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+        }
+
+        .product__description p {
+            max-height: 200px;
+            overflow: scroll;
+        }
+
+        .product__description {
+            border: 1px solid red;
+        }
+
+        .border-green {
+            border-width: 2px;
+            border-style: dotted;
+            border-color: blue;
+        }
+
+        ul li {
+            border: 1px solid green;
+            max-width: 200px;
+            display: inline-block;
+            padding: 10px 70px 5px 70px;
+            margin: 0;
+        }
+
+        .display-none {
+            display: none;
+        }
+        .visibility-hidden {
+            visibility: hidden;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .item-5 {
+            top: 10px;
+            right: 50px;
+        }
+
+        .position-absolute {
+            position: absolute;
+            top: 30px;
+            left: 100px;
+        }
+
+        .background {
+            background-color: yellow;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="main-top-content" class="all-letters-uppercase">
+        <span class="font-weight">This</span>
+        <span class="font-style"><i>is </i></span>
+        <span class="text-decoration">my </span>
+        <span class="line-height">second page creating with CSS.</span>
+    </div>
+    <div id="main-middle-content">
+        <p class="first-letter">
+            some long long text. Some long long text. Some long long text. Some long long text. Some long long text. Some long long text. Some long long text. Some long long text. Some long long text. Some long long text.
+        </p>
+        <p></p>
+    </div>
+    <div class="product">
+        <!-- padarykite jog visi span'ai butu 200px plocio ir 200px aukscio -->
+        <span class="product__description">
+            <span class="product__description--big">Price 50 &euro;</span>
+            <span>This table is awesome as hell :P~</span>
+        </span>
+        <span class="product__description">
+            <p>This chair is very compact and bla bla bla. This chair is very compact and bla bla bla. This chair is very compact and bla bla bla. This chair is very compact and bla bla bla. This chair is very compact and bla bla bla. This chair is very compact and bla bla bla. This chair is very compact and bla bla bla. This chair is very compact and bla bla bla. </p>
+        </span>
+        <span class="product__description">
+            <p class="border-green">This new phone has 5G.</p>
+        </span>
+        <span class="product__description"></span>
+    </div>
+    <div>
+        <!-- TODO: rewrite to BEM -->
+        <ul class="position-relative">
+            <li>Item description about how great is this item and so on....</li>
+            <li class="display-none">Item 2</li>
+            <li class="visibility-hidden">Item 3</li>
+            <li class="background">Item 4</li>
+            <li class="position-relative item-5">Item 5</li>
+            <li class="position-absolute">Item 6</li>
+        </ul>
+    </div>
 </body>
 </html>
