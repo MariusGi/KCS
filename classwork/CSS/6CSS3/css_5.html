@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS5</title>
+    <style>
+        #main {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        #main > * {
+            flex: 1 100%;
+            background-color: aqua;
+            margin: 10px;
+        }
+
+        img {
+            max-width: calc( 100% - 20px);
+        }
+
+        @media all and (min-width: 1000px) {
+            #main {
+                flex-direction: row;
+            }
+
+            .article {
+                flex: 2 0 0;
+                order: 2;
+            }
+
+            .menu {
+                order: 1;
+            }
+
+            .banner {
+                order: 3;
+            }
+
+            .menu, .banner {
+                flex: 1 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <header class="header">Resp</header>
+        <div id="main" class="main-content">
+            <!-- TODO: fix flex. Move flex to parent div -->
+            <article class="article">
+                <p>article</p>
+                <figure>
+                    <img src="../1HTML1/foto.jpg" alt="Sale poster">
+                    <figcaption>Buy buy now</figcaption>
+                </figure>
+            </article>
+
+            <nav class="menu">nav</nav>
+
+            <aside class="banner">aside</aside>
+
+        </div>
+        <footer class="footer">footer</footer>
+    </div>
+</body>
+</html>

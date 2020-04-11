@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS4</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .wrapper > * {
+            border: 1px solid red;
+            flex: 1 100%;
+        }
+
+        @media all and (min-width: 600px) {
+            .aside {
+                flex: 1 0 0;
+            }
+        }
+
+        @media all and (min-width: 800px) {
+            .main-content {
+                flex: 3 0 0;
+
+/*
+                flex-grow: 3;
+                flex-shrink: 0;
+                flex-basis: 0;
+*/
+            }
+
+            .aside-left {
+                order: 1;
+            }
+
+            .main-content {
+                order: 2;
+            }
+
+            .aside-right {
+                order: 3;
+            }
+
+            .footer {
+                order: 4;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>Header</header>
+        <article class="main-content">
+            <p>
+                Long very very, very very long text. Long very very, very very long text. Long very very, very very long text.
+            </p>
+        </article>
+        <aside class="aside aside-left">Aside</aside>
+        <aside class="aside aside-right">Aside</aside>
+        <footer class="footer">Footer</footer>
+    </div>
+</body>
+</html>
