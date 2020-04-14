@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ND JS2</title>
+</head>
+
+<body>
+    <script>
+        var output;
+        var colorTitle = "red";
+        var colorParagraph = "blue";
+        var title = "Skyrius1";
+        var article = "Magna ita offendit, anim quibusdam philosophari, an quid praetermissum nam nisi despicationes nescius elit commodo. Ita et distinguantur de id pariatur id laborum, ubi enim probant proident ad duis aut pariatur, sunt iudicem concursionibus nam fore ab voluptate do nulla consectetur voluptate elit aliquip, legam ad admodum et quid. Quae probant an commodo, litteris de summis ullamco. Est legam nostrud arbitrantur ex si a culpa fore quorum est an amet quis est aliquip, enim incididunt quo praetermissum. Eu pariatur ab fabulas. Minim nescius cohaerescant, qui quorum eram de singulis.";
+        var articleCharacterCount = article.length;
+
+        // output =
+        //     `<h1 style="color:${colorTitle}">${title}</h1>
+        //      <p style="color:${colorParagraph}">${article}</p>
+        //      <p>Tekste yra ${articleCharacterCount} simbolių</p>`;
+
+        output =
+            `<h1 id="title-text-color">${title}</h1>
+             <p id="article-text-color">${article}</p>
+             <p>Tekste yra ${articleCharacterCount} simbolių</p>`;
+
+        document.write(output);
+
+        document.getElementById('title-text-color').style.color = colorTitle;
+        document.getElementById('article-text-color').style.color = colorParagraph;
+    </script>
+</body>
+
+</html>

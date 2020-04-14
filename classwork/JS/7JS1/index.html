@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS1</title>
+</head>
+
+<body>
+    <div>
+        <h1 id="page-title">My first JS file</h1>
+        <p>logo</p>
+    </div>
+
+    <script>
+        /* DECLARATIONS */
+        /* naming is by CamelCase, not snake-case */
+        var car, output; // var type is undefined
+        var isCarAvailable = true; // var type is boolen
+        var carTotal = 20; // integer/number
+        var carsReserved = 10;
+        var saleMessage = 'First 2 hours are for free!'; // string
+        var newLisencePlate = ''; //string
+        var counterOfPrompt = 0;
+
+        /* ACTION / EDITING / ASSIGNING / FUNCTIONS / CALCULATION */
+        if ((carTotal - carsReserved) > 0) {
+            carTotal = carTotal - carsReserved; // number
+        }
+
+        // DIY. If numbers plate prompt is empty set var value to ''
+        // if NOT assign prompt value to var.
+        while (counterOfPrompt < 3) {
+            newLisencePlate = prompt('Enter your lisence plate number.');
+
+            if (newLisencePlate.length == 6) {
+                break;
+            } else {
+                newLisencePlate = false;
+                counterOfPrompt++;
+            }
+        }
+
+        carTotal = '10'; // from number to string
+        carTotal = String(carTotal); // same as 28th line.
+        output = saleMessage + ' Now we have ' + carTotal + ' available.';
+        newLisencePlate ? newLisencePlate : newLisencePlate = "Lisence number plate is invalid";
+        output = output + '<br>' + newLisencePlate;
+        carTotal = carTotal - 1;
+
+        /* OUTPUT */
+        alert(typeof(carTotal));
+        document.write(output);
+        console.log(isCarAvailable);
+        document.getElementById('page-title').innerHTML = '<u>CLOSED</u>';
+    </script>
+</body>
+
+</html>
