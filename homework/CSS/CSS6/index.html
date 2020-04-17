@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma</title>
+    <script src="https://kit.fontawesome.com/70853d6f94.js" crossorigin="anonymous"></script>
+    <style>
+        /*RESET*/
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        /*END OF RESET*/
+        input[type="text"],
+        input[type="submit"],
+        textarea,
+        select {
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+        fieldset legend {
+            text-transform: uppercase;
+        }
+        .main-content {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .main-content:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('https://cdn.pixabay.com/photo/2019/12/01/08/13/background-4664911_960_720.jpg');
+            background-size: cover;
+        }
+        .input-wrapper {
+            margin-top: 20px;
+        }
+        .user-information {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .user-information__inputs {
+            margin: 30px 20px 20px 20px;
+            text-align: end;
+        }
+        .fieldset-questions {
+            padding: 20px 40px 40px 40px;
+            margin-bottom: 20px;
+        }
+        .about-course {
+            display: flex;
+            flex-direction: column;
+        }
+        .fa-custom {
+            font-size: 50px;
+            margin-top: 20px;
+        }
+        .mt-5 {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <form>
+            <div class="user-information">
+                <fieldset>
+                    <legend>Jūsų informacija</legend>
+                    <i class="fas fa-user fa-custom"></i>
+                    <div class="user-information__inputs">
+                        <div>
+                            <label for="firstName">Vardas:</label>
+                            <input type="text" name="firstName" id="firstName" placeholder="Įveskite savo vardą">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="lastName">Pavardė:</label>
+                            <input type="text" name="lastName" id="lastName" placeholder="Įveskite savo pavardę">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div>
+                <fieldset class="fieldset-questions">
+                    <legend>Klausimai</legend>
+                    <i class="fas fa-question fa-custom"></i>
+                    <div class="input-wrapper">
+                        <label for="aboutUs">Kaip sužinojote apie mus?</label>
+                        <select id="aboutUs">
+                            <option>Google</option>
+                            <option>Facebook</option>
+                            <option>Instagram</option>
+                            <option>Friends</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="yes">Ar apsilankysite vėl?</label>
+                        <div class="mt-5">
+                            <label for="yes">Taip</label>
+                            <input type="radio" name="visitUs" id="yes">
+                            <label for="no">Ne</label>
+                            <input type="radio" name="visitUs" id="no">
+                            <label for="maybe">Galbūt</label>
+                            <input type="radio" name="visitUs" id="maybe">
+                        </div>
+                    </div>
+                    <div class="input-wrapper about-course">
+                        <label for="courseOpinion">Ką manote apie kursą?</label>
+                        <textarea id="courseOpinion" class="mt-5" cols="80" rows="8" placeholder="Rašykite viską ką galvojate"></textarea>
+                    </div>
+                    <div class="input-wrapper">
+                        <span>Pažymėkite programavimo/žymėjimo kalbas su kuriomis esate susipažinę:</span>
+                        <div class="mt-5">
+                            <div>
+                                <input type="checkbox" id="c#">
+                                <label for="c#">C#</label>
+
+                                <input type="checkbox" id="java">
+                                <label for="java">JAVA</label>
+
+                                <input type="checkbox" id="php">
+                                <label for="php">PHP</label>
+                            </div>
+                            <div class="mt-5">
+                                <input type="checkbox" id="html">
+                                <label for="html">HTML</label>
+
+                                <input type="checkbox" id="css">
+                                <label for="css">CSS</label>
+
+                                <input type="checkbox" id="javascript">
+                                <label for="javascript">JavaScript</label>
+                            </div>
+                            <div class="mt-5">
+                                <input type="checkbox" id="python">
+                                <label for="python">Python</label>
+
+                                <input type="checkbox" id="ruby">
+                                <label for="ruby">Ruby</label>
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="submit" value="Siūsti">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

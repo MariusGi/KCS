@@ -1,0 +1,81 @@
+/*
+ * Reseting styles
+ */
+p {
+/*    color: black!important;*/
+    color: black;
+    background-color: white;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* End of reset */
+
+/* My custom styles
+   HEADER section */
+
+#header span.logos .main-logo {
+    width: 120px;
+    height: 60px;
+}
+
+#header span.logos .main-logo:hover {
+    filter: contrast(0.2);
+}
+
+#header-main-menu {
+    font-size: 20px;
+}
+
+/* End of HEADER section */
+
+/* MAIN CONTENT section */
+
+#warning-message {
+    color: darkblue;
+    background-color: yellow;
+}
+
+body div p#warning-message.border-red {
+    border: 5px solid blue;
+}
+
+p.available-in-region a {
+    color: black;
+}
+
+p.available-in-region a:hover {
+    color: white;
+    background-color: black;
+}
+
+p:last-child {
+    color: red;
+}
+
+p:last-child a:visited {
+    color: grey;
+}
+
+.main-content {
+
+}
+
+/* End of MAIN CONTENT */
+
+/* FOOTER section */
+
+#footer {
+    height: 400px;
+    background-color: #2fc4bd;
+    opacity: 0.5;
+}
+
+/* End of FOOTER section */
