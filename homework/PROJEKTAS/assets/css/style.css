@@ -1,0 +1,40 @@
+/* GENERAL STYLES */
+.mt-10 {
+    margin-top: 10px;
+}
+.mt-20 {
+   margin-top: 20px; 
+}
+
+/*  */
+
+body {
+    background: url(../img/autumn-background-4334397_960_720.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.login-form-wrapper {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 500px;
+}
+
+.login-form-border {
+    border: 2px solid black;
+    border-radius: 10%;
+    padding: 40px;
+}
+
+.login-form-icon,
+.login-form-buttons-wrapper {
+    text-align: center;
+}
+
+.login-form-icon {
+    font-size: 50px;
+}
+
+.login-form-input-wrapper {
+    text-align: end;    
+}
