@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS3 JSON|FOR</title>
+</head>
+
+<body>
+    <div id="cars-list"></div>
+    <script>
+        var mainData = {
+            clientData: {
+                name: {
+                    firstName: 'Lina',
+                    lastName: 'Linaite'
+                },
+                email: 'happy-client@hotmail.com',
+                cars: {
+                    car: {
+                        model: 'Ford',
+                        vehicleType: 'C',
+                        lisencePlateNumber: 'none'
+                    },
+                    car: {
+                        model: 'Opel',
+                        vehicleType: 'B',
+                        lisencePlateNumber: 'none'
+                    },
+                    car: {
+                        model: 'Fiat',
+                        vehicleType: 'B',
+                        lisencePlateNumber: 'none'
+                    }
+                }
+            },
+            adminData: {
+                name: 'Zilvinas',
+                email: 'zilvinasvcs@gmail.com'
+            }
+        };
+        
+        function printAllClientCars() {
+            for (var i = 0; i < Object.keys(mainData.clientData.cars.car).length; i++) {
+                console.log(i);
+            }
+        }
+        
+        printAllClientCars();
+    </script>
+</body>
+</html>

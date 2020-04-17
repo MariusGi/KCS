@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hobbies array</title>
+</head>
+
+<body>
+    <script>
+        var hobbies = [
+            ['Eat', 1, 'patinka'],
+            ['Sleep', 7, 'nepatinka'],
+            ['TV', 3, 'patinka'],
+            ['Walk with dog', 1, 'nepatinka'],
+        ];
+        
+        //atspausdinti i konsole tik viena zodi ar patinka man ziureti tv
+        
+        console.log(hobbies[2][2]);
+        
+        //add new hobby element
+        hobbies.push(['Phone', 1, 'nepatinka']);
+        
+        //sukurti masyva, kuriame jus konsoleje atspausdinsite kiek procentaliai laiko paroje atima toji veikla.
+        for (var i = 0; i < hobbies.length; i++) {
+            var percentageTimeOfActivity = ((hobbies[i][1] / 24) * 100).toFixed();
+//            console.log(percentageTimeOfActivity);
+        }
+        
+        function freeTimeLeft() {
+            var result;
+            var totalOursConsumption = 0;
+            const hoursInADay = 24;
+            
+            for(var j = 0; j < hobbies.length; j++) {
+                totalOursConsumption += hobbies[j][1];
+            }
+            
+            console.log(totalOursConsumption);
+        }
+        hoursInADay - totalOursConsumption;
+        freeTimeLeft();
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+</head>
+
+<body>
+    <div>
+        <h1 id="page-title">My first JS file</h1>
+        <p>logo</p>
+        <p>All cars list:</p>
+        <p id="cars-list"></p>
+        <ol>
+            <li></li>
+        </ol>
+        <button id="add-new-car" onclick="promptAddNewCarLisencePlateNumber(); addCarToCarsArray(); addCarToOurDataObject(); ">Add new car</button>
+        <button id="check-prompt-value" onclick="checkPromptValue()">Check prompt value</button>
+    </div>
+
+    <script>
+        /* DECLARATIONS */
+        /* naming is by CamelCase, not snake-case */
+        var car, output; // var type is undefined
+        var isCarAvailable = true; // var type is boolen
+        var carTotal = 20; // integer/number
+        var carsReserved = 10;
+        var saleMessage = 'First 2 hours are for free!'; // string
+        var newLisencePlate = ''; //string
+        var counterOfPrompt = 0;
+        var carsList = ['JJT112', 'ASD123'];
+        var mainData = {
+            clientData: {
+                name: {
+                    firstName: 'Lina',
+                    lastName: 'Linaite'
+                },
+                email: 'happy-client@hotmail.com',
+                car: {
+                    model: '',
+                    vehicleType: 'B',
+                    lisencePlateNumber: 'none'
+                }
+            },
+            adminData: {
+                name: 'Zilvinas',
+                email: 'zilvinasvcs@gmail.com'
+            }
+        };
+
+        /* ACTION / EDITING / ASSIGNING / FUNCTIONS / CALCULATION */
+        //alert(mainData.clientData.name.firstName);
+        //alert(mainData['clientData']["name"]["firstName"]);
+
+        if ((carTotal - carsReserved) > 0) {
+            carTotal = carTotal - carsReserved; // number
+        }
+
+        function promptAddNewCarLisencePlateNumber() {
+            // DIY. If numbers plate prompt is empty set var value to ''
+            // if NOT assign prompt value to var.
+            while (counterOfPrompt < 3) {
+                newLisencePlate = prompt('Enter your lisence plate number.');
+
+                if (newLisencePlate.length == 6) {
+                    break;
+                } else {
+                    newLisencePlate = false;
+                    counterOfPrompt++;
+
+                }
+                /* TODO: add extra validation to check 3 symbols are letters, 3-6 digits */
+            }
+            return newLisencePlate;
+        }
+
+
+        // TODO: get prompt value and add that value into our array carsList
+        function addCarToCarsArray() {
+            carsList.unshift(newLisencePlate);
+            document.getElementById('cars-list').innerHTML = carsList;
+        }
+
+        function addCarToOurDataObject() {
+            // select in object LisencePlateNumber property and assign value from prompt.
+            var lisencePlateNumberInObject = mainData.clientData.car.lisencePlateNumber;
+             lisencePlateNumberInObject = newLisencePlate;
+            console.log(newLisencePlate);
+            console.log(mainData);
+            //alert(lisencePlateNumberInObject);
+        }
+
+        // change function addCarToCarsArray to return function
+        // TODO: create new function which do that console.log(message);
+        function logToConsole(message) {
+            console.log(message);
+        }
+
+        // write new function which calls a prompt function and throws function return value into alert message.
+        function checkPromptValue() {
+            var alertMessage = promptAddNewCarLisencePlateNumber();
+            alert(alertMessage);
+        }
+
+        function addNewlyInsertedCarToCarsList() {
+
+        }
+
+        // move var alertMessage out of function. call function checkPromptValue giving alert message value as argument.
+
+        carTotal = '10'; // from number to string
+        carTotal = String(carTotal); // same as 28th line.
+        output = saleMessage + ' Now we have ' + carTotal + ' available.';
+        newLisencePlate ? newLisencePlate : newLisencePlate = "Lisence number plate is invalid";
+        output = output + '<br>' + newLisencePlate;
+        carTotal = carTotal - 1;
+
+        /* OUTPUT */
+        //alert(typeof(carTotal));
+        document.write(output);
+        console.log(isCarAvailable);
+        document.getElementById('page-title').innerHTML = '<u>CLOSED</u>';
+    </script>
+</body>
+</html>
