@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework | JS8</title>
+</head>
+<body>
+    <script>
+        
+        let nameArr = ['Jonas', 'Petras', 'Martynas', 'Ona', 'Urtė', 'Ema'];
+        
+        
+        console.log('consoleLogArr function result');
+        consoleLogArr(nameArr, 'Jonas');
+        
+        console.log('consoleLogArr2 function result');
+        consoleLogArr2(nameArr, 'Ema');
+        
+        console.log('consoleLogArr3 function result');
+        consoleLogArr3(nameArr, 'Ona');
+        
+        console.log('consoleLogArr4 function result');
+        consoleLogArr4(nameArr, 'Martynas');
+        
+        
+        function consoleLogArr(arr, valToExclude) {
+            let indexInArr = arr.indexOf(valToExclude);
+            if (indexInArr >= 0) arr.splice(indexInArr, 1);
+            console.log(arr);
+        }
+        
+        function consoleLogArr2(arr, valToExclude) {
+            arr = arr.filter(item => item !== valToExclude);            
+            console.log(arr);     
+        }
+        
+        function consoleLogArr3(arr, valToExclude) {
+            arr.forEach(element => {
+                if (element === valToExclude) 
+                    arr.splice(arr.indexOf(element), 1);
+            });
+            console.log(arr);
+        }
+        
+        function consoleLogArr4(arr, valToExclude) {
+            for (let el = 0; el < arr.length; el++) {
+                if (arr[el] === valToExclude) {
+                    arr.push(arr.splice(el, 1)[0]);
+                    arr.pop();
+                }
+            }
+            console.log(arr);
+        }
+        
+    </script>
+</body>
+</html>
