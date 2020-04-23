@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS3 JSON|FOR</title>
+    <title>JSON for</title>
 </head>
 
 <body>
@@ -39,14 +39,17 @@
                 email: 'zilvinasvcs@gmail.com'
             }
         };
-        
+
+        console.log(mainData.clientData.cars);
+
         function printAllClientCars() {
-            for (var i = 0; i < Object.keys(mainData.clientData.cars.car).length; i++) {
-                console.log(i);
+            for (var i = 0; i < mainData.clientData.cars.length; i++ ) {
+                console.log(mainData.clientData.cars);
             }
         }
-        
+
         printAllClientCars();
+
     </script>
 </body>
 </html>

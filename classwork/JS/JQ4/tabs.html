@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabs|JQ</title>
+    <style>
+        .active {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <p>Tabs. demo.</p>
+    <div class="tab-panel">
+        <div class="tabs">
+            <a href="#tab1">Description</a>
+            <a href="#tab2">Dimensions</a>
+            <a href="#tab3">Comments</a>
+        </div>
+        <div class="tab-content" id="tab1">
+            <h2>Something about product</h2>
+        </div>
+        <div class="tab-content" id="tab2">
+            <h2>Dimensions</h2>
+        </div>
+        <div class="tab-content" id="tab3">
+            <h2>Comments/reviews</h2>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script>
+    // atlikti:
+        /*
+            1. pagal nutylejima paslepti visus tab'us
+            2. Rodyti tik pirmaji tab'a
+            3. indikuoti kad pirmas tab'as aktyvus
+            4. paspaudus kita taba paslepti visus tabus turini.
+            5. rodyti tik pasirinkta / paspausta tab'a + jo turini.
+            6. isjungti standartini narsykles veiksma (click'ui)
+        */
+        $(document).ready(function () {
+            // 1.
+            $('.tab-content').hide(1000);
+            
+            // 2.
+            $('.tab-content:first').fadeIn(2000);
+            
+            // 3.
+            $('.tabs > a:first').addClass('active');
+            
+            // 4.
+            $('.tabs > a').click(function () {
+                var $clickedItem = $(this).attr('href');
+                $('.tab-content').hide();
+                // 5.
+                $($clickedItem).show();
+                $('.tabs > a').removeClass('active');
+                $('.tabs > a[href="' + $clickedItem + '"]').addClass('active');
+            }); 
+        });
+    </script>
+</body>
+</html>

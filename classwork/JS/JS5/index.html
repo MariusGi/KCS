@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list || 11JQ</title>
+</head>
+<body>
+    <div>
+        <input type="text">
+        <input type="button" value="Add new item">
+        <p>Todo list:</p>
+        <ol>
+            <li>Eat</li>
+            <li>Sleep</li>
+        </ol>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var $newListItemLi, $inputValue;
+            var $inputElement = $('input:text');
+            
+            function addNewItem() {
+                $inputValue = $inputElement.val();
+                $newListItemLi = $('<li></li>');
+                $newListItemLi.append($inputValue);
+                $('ol').append($newListItemLi);
+                logConsole($inputValue);
+                $inputElement.val('');
+            }
+            
+            function logConsole(value = 'none') {
+                console.log(value);
+            }
+            
+            $('input:button').on('click', function () {
+                addNewItem();
+            });
+        });
+    </script>
+</body>
+</html>

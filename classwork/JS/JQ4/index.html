@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch classes</title>
+    <style>
+        .alert-text-color {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p id="main-content" class="colourful-text">Some text</p>
+    <button id="change-color">Change color</button>
+    <script>
+        var changeButton = document.getElementById('change-color');
+        changeButton.addEventListener('click', changeTextColor);
+        
+        function changeTextColor() {
+            var changableText = document.querySelector('p#main-content.colourful-text');
+            // changableText.style.color = 'red';
+            
+            if(changableText.classList.contains('alert-text-color')) {
+                changableText.classList.remove('alert-text-color');
+            } else {
+                changableText.classList.add('alert-text-color');
+            }
+            
+        }
+    </script>
+</body>
+</html>

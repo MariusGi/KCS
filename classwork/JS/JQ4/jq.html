@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch classes</title>
+    <style>
+        .alert-text-color {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p id="main-content" class="colourful-text">Some text</p>
+    <button id="change-color">Change color</button>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script>
+        
+        var $changeButton = $('#change-color');
+        // changeButton.addEventListener('click', changeTextColor);
+            $changeButton.on('click', function () {
+                var $changableText = $('p#main-content.colourful-text');
+
+                if($changableText.hasClass('alert-text-color')) {
+                    $changableText.removeClass('alert-text-color');
+                } else {
+                    $changableText.addClass('alert-text-color');
+                }
+            });
+            
+    </script>
+</body>
+</html>

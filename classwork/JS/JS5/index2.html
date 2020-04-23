@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX | JQ11</title>
+</head>
+<body>
+    <h1>AJAX PAGE</h1>
+    <button>Get data</button>
+    <div id="data">
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('button').on('click', function () {
+                var $ourData = $('#data');
+                const ajaxUrl = 'https://api.covid19api.com/summary';
+                
+                $.ajax(
+                    {
+                        type: 'GET',
+                        url: ajaxUrl,
+                        success: function (result) {
+                            console.log(result.Countries[0].Country);
+                            
+                            var output = '<table><tr><th>Duomens pavadinimas</th><th>Duomenys</th></tr></table>';
+                            
+                            for(var i in result.Countries) {
+                                let countryName = result.Countries[i].Country;
+                                let countryCode = result.Countries[i].CountryCode;
+                                
+                                if (countryName == 'Lithuania') {
+                                    output += '<tr></td>Šalis</td></tr>' + countryName + '</td></tr>';
+                                    output += '<tr></td>Šalis</td></tr>' + countryCode + '</td></tr>';
+                                }
+                            }
+                            
+                            output += '</table>';
+                            
+                            $ourData.html(output);
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+</body>
+</html>
