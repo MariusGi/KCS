@@ -1,5 +1,6 @@
 const possibleOperations = ['+', '-'];
 const startBtn           = document.getElementById('start-game');
+const endTimeIndicator   = document.getElementById('timer-end-indicator');
 const firstOperand       = document.getElementById('math-problem-first-number');
 const operation          = document.getElementById('math-problem-operation');
 const equalsSign         = document.getElementById('math-problem-equals-sign');
@@ -7,25 +8,39 @@ const secondOperand      = document.getElementById('math-problem-second-number')
 const resultInput        = document.getElementById('math-problem-result');
 const submitResultBtn    = document.getElementById('math-problem-submit');
 const score              = document.getElementById('math-problem-score');
+const timer              = document.getElementById('timer');
 
 let scoreValue = 0;
 
 startBtn.addEventListener('click', function () {
+    startTimer();
     generateMathProblem();
+
+    // stopGame();
+    // publishResult();
 });
 
 submitResultBtn.addEventListener('click', function () {
+    if(timer.innerHTML == 'time 0')
+        return;
+    
     let isResultValid = validateResult();
 
     if(! isResultValid) {
         scoreValue--;
         score.innerHTML = scoreValue;
+        scoreStyleChangeAfterSubmit('color-red', 'font-size-30');
         generateMathProblem();
     } else {
         scoreValue++;
         score.innerHTML = scoreValue;
+        scoreStyleChangeAfterSubmit('color-green', 'font-size-30');
         generateMathProblem();
     }
+});
+
+endTimeIndicator.addEventListener('change', function () {
+   alert('test'); 
 });
 
 function generateMathProblem() {
@@ -78,4 +93,45 @@ function returnRandomArrayElement(arr) {
     let randomArrElement = arr[Math.floor(Math.random() * arr.length)];
     
     return randomArrElement;
+}
+
+function startTimer() {
+    let time = 30;
+    
+    incrementTimer(time);
+    
+    let intervalTimer = setInterval(function() {
+        time--;
+        incrementTimer(time);
+        if(time <= 0) {
+            clearInterval(intervalTimer);
+            endTimeIndicator.value = '+';
+        }
+    }, 1000);
+}
+
+function incrementTimer(time) {
+    timer.innerHTML = 'time ' + time;
+}
+
+function scoreStyleChangeAfterSubmit(colorToggleClass, sizeToggleClass) {
+    score.classList.toggle(colorToggleClass);
+    score.classList.toggle(sizeToggleClass);
+    
+    setTimeout(function () {
+        score.classList.toggle(colorToggleClass);
+        score.classList.toggle(sizeToggleClass);
+    }, 1000);
+}
+
+function stopGame() {
+    firstOperand.innerHTML = ''
+    operation.innerHTML = ''
+    secondOperand.innerHTML = ''
+    equalsSign.classList.add('hidden');
+    resultInput.value = '';
+    resultInput.classList.add('hidden');
+    submitResultBtn.classList.add('hidden');
+    score.classList.add('hidden');
+    startBtn.classList.remove('d-none');
 }

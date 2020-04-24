@@ -5,3 +5,19 @@
 .hidden {
     visibility: hidden;
 }
+
+.color-red {
+    color: red;
+}
+
+.color-green {
+    color: green ;
+}
+
+.font-size-30 {
+    font-size: 30px;
+}
+
+#math-problem-result {
+    width: 50px;
+}
