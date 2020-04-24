@@ -18,7 +18,9 @@ submitResultBtn.addEventListener('click', function () {
     let isResultValid = validateResult();
 
     if(! isResultValid) {
-        
+        scoreValue--;
+        score.innerHTML = scoreValue;
+        generateMathProblem();
     } else {
         scoreValue++;
         score.innerHTML = scoreValue;
