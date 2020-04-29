@@ -1,7 +1,0 @@
-DELETE https://a.klaviyo.com/api/v2/list/LLxLag/members
-content-type: application/json
-
-{
-    "api_key": "pk_47c31b2e85ffdc5b5704218578cc1f935b",
-    "emails": ["thomas.jefferson@example.com"]
-}
