@@ -1,6 +1,6 @@
 const possibleOperations = ['+', '-'];
 const startBtn           = document.getElementById('start-game');
-const endTimeIndicator   = document.getElementById('timer-end-indicator');
+// const endTimeIndicator   = document.getElementById('timer-end-indicator');
 const firstOperand       = document.getElementById('math-problem-first-number');
 const operation          = document.getElementById('math-problem-operation');
 const equalsSign         = document.getElementById('math-problem-equals-sign');
@@ -39,9 +39,16 @@ submitResultBtn.addEventListener('click', function () {
     }
 });
 
-endTimeIndicator.addEventListener('change', function () {
-   alert('test'); 
+resultInput.addEventListener('keyup', function (event) {
+    if (event.keyCode === 13) {
+        // event.preventDefault();
+        submitResultBtn.click();
+    }
 });
+
+// endTimeIndicator.addEventListener('change', function () {
+//    alert('test'); 
+// });
 
 function generateMathProblem() {
     
@@ -55,6 +62,7 @@ function generateMathProblem() {
         equalsSign.classList.remove('hidden');
         resultInput.value = '';
         resultInput.classList.remove('hidden');
+        resultInput.focus();
         submitResultBtn.classList.remove('hidden');
         score.classList.remove('hidden');
 }
@@ -105,7 +113,7 @@ function startTimer() {
         incrementTimer(time);
         if(time <= 0) {
             clearInterval(intervalTimer);
-            endTimeIndicator.value = '+';
+            // endTimeIndicator.value = '+';
         }
     }, 1000);
 }
