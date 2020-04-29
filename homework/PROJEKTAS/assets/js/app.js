@@ -1,6 +1,5 @@
 const possibleOperations = ['+', '-'];
 const startBtn           = document.getElementById('start-game');
-// const endTimeIndicator   = document.getElementById('timer-end-indicator');
 const firstOperand       = document.getElementById('math-problem-first-number');
 const operation          = document.getElementById('math-problem-operation');
 const equalsSign         = document.getElementById('math-problem-equals-sign');
@@ -12,31 +11,35 @@ const timer              = document.getElementById('timer');
 
 let scoreValue = 0;
 
-startBtn.addEventListener('click', function () {
-    startTimer();
-    generateMathProblem();
 
+startBtn.addEventListener('click', function () {
+    generateMathProblem();
+    startTimer();
+    
     // stopGame();
     // publishResult();
 });
 
 submitResultBtn.addEventListener('click', function () {
-    if(timer.innerHTML == 'time 0')
+
+    if(timer.innerHTML == '0') {
         return;
-    
+    }
+        
     let isResultValid = validateResult();
 
     if(! isResultValid) {
         scoreValue--;
-        score.innerHTML = scoreValue;
         scoreStyleChangeAfterSubmit('color-red', 'font-size-30');
-        generateMathProblem();
     } else {
         scoreValue++;
-        score.innerHTML = scoreValue;
         scoreStyleChangeAfterSubmit('color-green', 'font-size-30');
-        generateMathProblem();
+        // incrementTimer();
     }
+
+    score.innerHTML = scoreValue;
+    generateMathProblem();
+
 });
 
 resultInput.addEventListener('keyup', function (event) {
@@ -46,9 +49,6 @@ resultInput.addEventListener('keyup', function (event) {
     }
 });
 
-// endTimeIndicator.addEventListener('change', function () {
-//    alert('test'); 
-// });
 
 function generateMathProblem() {
     
@@ -106,21 +106,28 @@ function returnRandomArrayElement(arr) {
 function startTimer() {
     let time = 30;
     
-    incrementTimer(time);
+    time = decrementTimer(time);
     
     let intervalTimer = setInterval(function() {
-        time--;
-        incrementTimer(time);
-        if(time <= 0) {
+        time = decrementTimer(time);
+
+        if(time < 0) {
             clearInterval(intervalTimer);
-            // endTimeIndicator.value = '+';
         }
     }, 1000);
 }
 
-function incrementTimer(time) {
-    timer.innerHTML = 'time ' + time;
+function decrementTimer(time) {
+    timer.innerHTML = time;
+    time--;
+    return time;
 }
+
+// function incrementTimer() {
+//     let currentTime = parseInt(timer.innerHTML);
+//     let updatedTime = timer.innerHTML = currentTime + 3;
+//     return updatedTime;
+// }
 
 function scoreStyleChangeAfterSubmit(colorToggleClass, sizeToggleClass) {
     score.classList.toggle(colorToggleClass);
@@ -132,14 +139,14 @@ function scoreStyleChangeAfterSubmit(colorToggleClass, sizeToggleClass) {
     }, 1000);
 }
 
-function stopGame() {
-    firstOperand.innerHTML = ''
-    operation.innerHTML = ''
-    secondOperand.innerHTML = ''
-    equalsSign.classList.add('hidden');
-    resultInput.value = '';
-    resultInput.classList.add('hidden');
-    submitResultBtn.classList.add('hidden');
-    score.classList.add('hidden');
-    startBtn.classList.remove('d-none');
-}
+// function stopGame() {
+//     firstOperand.innerHTML = ''
+//     operation.innerHTML = ''
+//     secondOperand.innerHTML = ''
+//     equalsSign.classList.add('hidden');
+//     resultInput.value = '';
+//     resultInput.classList.add('hidden');
+//     submitResultBtn.classList.add('hidden');
+//     score.classList.add('hidden');
+//     startBtn.classList.remove('d-none');
+// }
