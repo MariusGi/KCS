@@ -1,5 +1,6 @@
 const possibleOperations = ['+', '-'];
 const startBtn           = document.getElementById('start-game');
+const endTimeIndicator   = document.getElementById('end-time-indicator');
 const firstOperand       = document.getElementById('math-problem-first-number');
 const operation          = document.getElementById('math-problem-operation');
 const equalsSign         = document.getElementById('math-problem-equals-sign');
@@ -9,17 +10,17 @@ const submitResultBtn    = document.getElementById('math-problem-submit');
 const score              = document.getElementById('math-problem-score');
 const timer              = document.getElementById('timer');
 const timeIncrement      = 3;
+const stopWatchStartingTime = 5;
 
+let stopWatchTime;
 let scoreValue = 0;
-let stopWatchTime = 30;
 
 
 startBtn.addEventListener('click', function () {
+    stopWatchTime = stopWatchStartingTime;
+    scoreValue = 0;
     generateMathProblem();
-    startTimer(stopWatchTime);
-    
-    // stopGame();
-    // publishResult();
+    startTimer(stopWatchStartingTime);
 });
 
 submitResultBtn.addEventListener('click', function () {
@@ -52,22 +53,29 @@ resultInput.addEventListener('keyup', function (event) {
     }
 });
 
+endTimeIndicator.addEventListener('click', function () {
+    stopGame();
+});
+
 
 function generateMathProblem() {
     
     let randomFirstNumber  = Math.round(Math.random() * 100);
     let randomSecondNumber = Math.round(Math.random() * 100);
-    
+    let elementsToUnhide = [equalsSign, resultInput, submitResultBtn, score, timer];
+
+        elementsToUnhide.forEach(element => {
+            element.classList.remove('hidden');
+        });
+
         startBtn.classList.add('d-none');
         firstOperand.innerHTML = randomFirstNumber;
         operation.innerHTML = returnRandomArrayElement(possibleOperations);
         secondOperand.innerHTML = randomSecondNumber;
-        equalsSign.classList.remove('hidden');
         resultInput.value = '';
-        resultInput.classList.remove('hidden');
         resultInput.focus();
-        submitResultBtn.classList.remove('hidden');
-        score.classList.remove('hidden');
+        score.innerHTML = scoreValue;
+
 }
 
 function validateResult() {
@@ -115,6 +123,7 @@ function startTimer() {
 
         if(stopWatchTime < 0) {
             clearInterval(intervalTimer);
+            endTimeIndicator.click();
         }
     }, 1000);
 }
@@ -138,14 +147,18 @@ function elementStyleChangeAfterSubmit(element, colorToggleClass, sizeToggleClas
     }, 1000);
 }
 
-// function stopGame() {
-//     firstOperand.innerHTML = ''
-//     operation.innerHTML = ''
-//     secondOperand.innerHTML = ''
-//     equalsSign.classList.add('hidden');
-//     resultInput.value = '';
-//     resultInput.classList.add('hidden');
-//     submitResultBtn.classList.add('hidden');
-//     score.classList.add('hidden');
-//     startBtn.classList.remove('d-none');
-// }
+function stopGame() {
+
+    let elementsToHide = [equalsSign, resultInput, submitResultBtn, timer];
+
+    elementsToHide.forEach(element => {
+        element.classList.add('hidden');
+    });
+
+    firstOperand.innerHTML = ''
+    operation.innerHTML = ''
+    secondOperand.innerHTML = ''
+    resultInput.value = '';
+    startBtn.classList.remove('d-none');
+
+}
