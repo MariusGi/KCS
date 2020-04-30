@@ -8,13 +8,15 @@ const resultInput        = document.getElementById('math-problem-result');
 const submitResultBtn    = document.getElementById('math-problem-submit');
 const score              = document.getElementById('math-problem-score');
 const timer              = document.getElementById('timer');
+const timeIncrement      = 3;
 
 let scoreValue = 0;
+let stopWatchTime = 30;
 
 
 startBtn.addEventListener('click', function () {
     generateMathProblem();
-    startTimer();
+    startTimer(stopWatchTime);
     
     // stopGame();
     // publishResult();
@@ -30,11 +32,12 @@ submitResultBtn.addEventListener('click', function () {
 
     if(! isResultValid) {
         scoreValue--;
-        scoreStyleChangeAfterSubmit('color-red', 'font-size-30');
+        elementStyleChangeAfterSubmit(score, 'color-red', 'font-size-30');
     } else {
         scoreValue++;
-        scoreStyleChangeAfterSubmit('color-green', 'font-size-30');
-        // incrementTimer();
+        elementStyleChangeAfterSubmit(score, 'color-green', 'font-size-30');
+        elementStyleChangeAfterSubmit(timer, 'color-green', 'font-size-30');
+        incrementTimer();
     }
 
     score.innerHTML = scoreValue;
@@ -104,38 +107,34 @@ function returnRandomArrayElement(arr) {
 }
 
 function startTimer() {
-    let time = 30;
     
-    time = decrementTimer(time);
+    decrementTimer(stopWatchTime);
     
     let intervalTimer = setInterval(function() {
-        time = decrementTimer(time);
+        decrementTimer(stopWatchTime);
 
-        if(time < 0) {
+        if(stopWatchTime < 0) {
             clearInterval(intervalTimer);
         }
     }, 1000);
 }
 
-function decrementTimer(time) {
-    timer.innerHTML = time;
-    time--;
-    return time;
+function decrementTimer() {
+    timer.innerHTML = stopWatchTime;
+    stopWatchTime--;
 }
 
-// function incrementTimer() {
-//     let currentTime = parseInt(timer.innerHTML);
-//     let updatedTime = timer.innerHTML = currentTime + 3;
-//     return updatedTime;
-// }
+function incrementTimer() {
+    stopWatchTime += timeIncrement;
+}
 
-function scoreStyleChangeAfterSubmit(colorToggleClass, sizeToggleClass) {
-    score.classList.toggle(colorToggleClass);
-    score.classList.toggle(sizeToggleClass);
+function elementStyleChangeAfterSubmit(element, colorToggleClass, sizeToggleClass) {
+    element.classList.toggle(colorToggleClass);
+    element.classList.toggle(sizeToggleClass);
     
     setTimeout(function () {
-        score.classList.toggle(colorToggleClass);
-        score.classList.toggle(sizeToggleClass);
+        element.classList.toggle(colorToggleClass);
+        element.classList.toggle(sizeToggleClass);
     }, 1000);
 }
 
