@@ -36,8 +36,8 @@ submitResultBtn.addEventListener('click', function () {
     } else {
         scoreValue++;
         elementStyleChangeAfterSubmit(score, 'color-green', 'font-size-30');
-        elementStyleChangeAfterSubmit(timer, 'color-green', 'font-size-30');
         incrementTimer();
+        elementStyleChangeAfterSubmit(timer, 'color-green', 'font-size-30');
     }
 
     score.innerHTML = scoreValue;
