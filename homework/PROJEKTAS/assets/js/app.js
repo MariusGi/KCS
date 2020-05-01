@@ -10,7 +10,7 @@ const submitResultBtn    = document.getElementById('math-problem-submit');
 const score              = document.getElementById('math-problem-score');
 const timer              = document.getElementById('timer');
 const timeIncrement      = 3;
-const stopWatchStartingTime = 5;
+const stopWatchStartingTime = 30;
 
 let stopWatchTime;
 let scoreValue = 0;
