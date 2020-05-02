@@ -1,14 +1,22 @@
 const possibleOperations = ['+', '-'];
+
 const startBtn           = document.getElementById('start-game');
 const endTimeIndicator   = document.getElementById('end-time-indicator');
 const firstOperand       = document.getElementById('math-problem-first-number');
 const operation          = document.getElementById('math-problem-operation');
-const equalsSign         = document.getElementById('math-problem-equals-sign');
 const secondOperand      = document.getElementById('math-problem-second-number');
 const resultInput        = document.getElementById('math-problem-result');
 const submitResultBtn    = document.getElementById('math-problem-submit');
-const score              = document.getElementById('math-problem-score');
-const timer              = document.getElementById('timer');
+const lastScoreVal       = document.getElementById('last-score-value');
+
+const lastScoreheading   = document.querySelector('.last-score-heading');
+const score              = document.querySelector('.game-score-value');
+const gameClock          = document.querySelector('.game-clock-value');
+const gameRulesWrapper   = document.querySelector('.game-rules-wrapper');
+const gameClockWrapper   = document.querySelector('.game-clock-wrapper');
+const exerciseWrapper    = document.querySelector('.exercise-content-wrapper');
+const gameScoreWrapper   = document.querySelector('.game-score-wrapper');
+
 const timeIncrement      = 3;
 const stopWatchStartingTime = 30;
 
@@ -16,16 +24,15 @@ let stopWatchTime;
 let scoreValue = 0;
 
 
-startBtn.addEventListener('click', function () {
+startBtn.addEventListener('click', () => {
     stopWatchTime = stopWatchStartingTime;
     scoreValue = 0;
     generateMathProblem();
-    startTimer(stopWatchStartingTime);
+    startgameClock(stopWatchStartingTime);
 });
 
-submitResultBtn.addEventListener('click', function () {
-
-    if(timer.innerHTML == '0') {
+submitResultBtn.addEventListener('click', () => {
+    if(gameClock.innerHTML == '0') {
         return;
     }
         
@@ -33,49 +40,46 @@ submitResultBtn.addEventListener('click', function () {
 
     if(! isResultValid) {
         scoreValue--;
-        elementStyleChangeAfterSubmit(score, 'color-red', 'font-size-30');
+        elementStyleChangeAfterSubmit(score, 'color-red', 'font-size-40');
     } else {
         scoreValue++;
-        elementStyleChangeAfterSubmit(score, 'color-green', 'font-size-30');
-        incrementTimer();
-        elementStyleChangeAfterSubmit(timer, 'color-green', 'font-size-30');
+        elementStyleChangeAfterSubmit(score, 'color-green', 'font-size-40');
+        incrementgameClock();
+        elementStyleChangeAfterSubmit(gameClock, 'color-green', 'font-size-40');
     }
 
     score.innerHTML = scoreValue;
     generateMathProblem();
-
 });
 
-resultInput.addEventListener('keyup', function (event) {
+resultInput.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
         // event.preventDefault();
         submitResultBtn.click();
     }
 });
 
-endTimeIndicator.addEventListener('click', function () {
+endTimeIndicator.addEventListener('click', () => {
     stopGame();
 });
 
 
 function generateMathProblem() {
-    
     let randomFirstNumber  = Math.round(Math.random() * 100);
     let randomSecondNumber = Math.round(Math.random() * 100);
-    let elementsToUnhide = [equalsSign, resultInput, submitResultBtn, score, timer];
+    let elementsToUnhide = [gameClockWrapper, exerciseWrapper, gameScoreWrapper];
 
         elementsToUnhide.forEach(element => {
             element.classList.remove('hidden');
         });
 
-        startBtn.classList.add('d-none');
+        gameRulesWrapper.classList.add('d-none');
         firstOperand.innerHTML = randomFirstNumber;
         operation.innerHTML = returnRandomArrayElement(possibleOperations);
         secondOperand.innerHTML = randomSecondNumber;
         resultInput.value = '';
         resultInput.focus();
         score.innerHTML = scoreValue;
-
 }
 
 function validateResult() {
@@ -114,26 +118,25 @@ function returnRandomArrayElement(arr) {
     return randomArrElement;
 }
 
-function startTimer() {
+function startgameClock() {
+    decrementgameClock(stopWatchTime);
     
-    decrementTimer(stopWatchTime);
-    
-    let intervalTimer = setInterval(function() {
-        decrementTimer(stopWatchTime);
+    let intervalgameClock = setInterval(() => {
+        decrementgameClock(stopWatchTime);
 
         if(stopWatchTime < 0) {
-            clearInterval(intervalTimer);
+            clearInterval(intervalgameClock);
             endTimeIndicator.click();
         }
     }, 1000);
 }
 
-function decrementTimer() {
-    timer.innerHTML = stopWatchTime;
+function decrementgameClock() {
+    gameClock.innerHTML = stopWatchTime;
     stopWatchTime--;
 }
 
-function incrementTimer() {
+function incrementgameClock() {
     stopWatchTime += timeIncrement;
 }
 
@@ -141,15 +144,14 @@ function elementStyleChangeAfterSubmit(element, colorToggleClass, sizeToggleClas
     element.classList.toggle(colorToggleClass);
     element.classList.toggle(sizeToggleClass);
     
-    setTimeout(function () {
+    setTimeout(() => {
         element.classList.toggle(colorToggleClass);
         element.classList.toggle(sizeToggleClass);
     }, 1000);
 }
 
 function stopGame() {
-
-    let elementsToHide = [equalsSign, resultInput, submitResultBtn, timer];
+    let elementsToHide = [gameClockWrapper, exerciseWrapper, gameScoreWrapper];
 
     elementsToHide.forEach(element => {
         element.classList.add('hidden');
@@ -159,6 +161,7 @@ function stopGame() {
     operation.innerHTML = ''
     secondOperand.innerHTML = ''
     resultInput.value = '';
-    startBtn.classList.remove('d-none');
-
+    gameRulesWrapper.classList.remove('d-none');
+    lastScoreVal.innerHTML = scoreValue;
+    lastScoreheading.classList.remove('d-none');
 }
