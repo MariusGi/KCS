@@ -6,10 +6,8 @@
    margin-top: 20px; 
 }
 
-/*  */
-
 body {
-    background: url(../img/autumn-background-4334397_960_720.jpg) no-repeat center center fixed;
+    background: url(../img/mistake-1966460_640.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -17,7 +15,7 @@ body {
  display: flex;
  justify-content: center;
  align-items: center;
- height: 500px;
+ height: 550px;
 }
 
 .login-form-border {

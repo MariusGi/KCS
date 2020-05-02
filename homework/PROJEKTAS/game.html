@@ -5,13 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="./assets/css/reset.css" rel="stylesheet">
+    <link href="./assets/css/main.css" rel="stylesheet">
     <link href="./assets/css/game.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <div class="row text-align-center justify-content-center">
+            <div class="col-4 col-md-3 col-lg-2">
+                <a href="index.html" class="btn btn-success" title="Home">Home</a>
+            </div>
+            <!-- <div class="col-4 col-md-3 col-lg-2">
+                <a href="#" title="Game">Game</a>
+            </div> -->
+            <div class="col-4 col-md-3 col-lg-2">
+                <a href="#" class="btn btn-danger" title="Scoreboard" onclick="alert('Sorry, scoreboard currently disabled');">Scoreboard</a>
+            </div>
+        </div>
         <div class="row text-align-center justify-content-center align-items-center">
             <div class="col-12">
-                <h1>Speedy calculation contest</h1>
+                <h1>Speedy calculation game</h1>
                 <input type="hidden" id="end-time-indicator"></input>
                 <div class="game-rules-wrapper">
                     <p>You will have 30 seconds to show your skills.</p>

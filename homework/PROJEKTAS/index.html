@@ -6,7 +6,8 @@
     <title>Document</title>
     <linK href="./assets/css/reset.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/70853d6f94.js" crossorigin="anonymous"></script>
-    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="./assets/css/main.css" rel="stylesheet">
+    <link href="./assets/css/index.css" rel="stylesheet">
 </head>
 <body class="body-home-page">
     <div class="login-form-wrapper">
@@ -26,8 +27,11 @@
                     </div>
                 </div>
                 <div class="login-form-buttons-wrapper mt-20">
-                    <input type="submit" value="Log In">
-                    <button>Sign Up</button>
+                    <input type="submit" class="btn btn-danger" value="Log In" onclick="alert('Sorry, Log In currently disabled');">
+                    <button class="btn btn-danger" onclick="alert('Sorry, registration currently disabled');">Sign Up</button>
+                </div>
+                <div class="text-align-center">
+                    <a href="./game.html" class="btn btn-success mt-20" title="Skip registration">Skip registration</a>
                 </div>
             </form>
         </div>
