@@ -1,12 +1,38 @@
+<?php
+    include './includes/autoloader.inc.php';
+
+    if (isset($_POST['username']))
+    {
+        $userForm = new UserForm();
+        $isValid = $userForm->validate($_POST['username']);
+        
+        // username or ip address is invalid
+        if (!$isValid) return false;
+
+        $queryData = $userForm->returnQueryDataIfExistsInDb();
+        
+        // username does not exist
+        // new username can be created
+        if (!$queryData) return false;
+
+        $isUsernameLinkedToIp = $userForm->checkIfUsernameLinkedToIp($queryData);
+        
+        // set cookie and login user
+        if ($isUsernameLinkedToIp);
+
+        // display error that username already exists
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="./assets/css/reset.css" rel="stylesheet">
-    <link href="./assets/css/main.css" rel="stylesheet">
-    <link href="./assets/css/game.css" rel="stylesheet">
+    <title>Game</title>
+    <link href="./themes/numerico/assets/css/reset.css" rel="stylesheet">
+    <link href="./themes/numerico/assets/css/main.css" rel="stylesheet">
+    <link href="./themes/numerico/assets/css/index.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -28,9 +54,16 @@
                 <div class="game-rules-wrapper">
                     <p>You will have 30 seconds to show your skills.</p>
                     <p>Each correct awnser grants you additional 3 seconds.</p>
-                    <h4>Press start button to start the game!</h4>
+                    <h4>Please enter your username</h4>
+                    <div>
+                        <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+                            <input type="text" name="username">
+                            <input type="submit" value="Submit" class="btn btn-success">
+                        </form>
+                    </div>
+                    <h4 class="hidden">Press start button to start the game!</h4>
                     <h4 class="d-none last-score-heading">Your last score: <span id="last-score-value"></span></h4>
-                    <button id="start-game" class="btn btn-success">Start game</button>
+                    <button id="start-game" class="btn btn-success hidden">Start game</button>
                 </div>
             </div>
         </div>
@@ -54,6 +87,6 @@
         </div>
     </div>
 
-    <script src="./assets/js/app.js"></script>
+    <script src="./themes/numerico/assets/js/app.js"></script>
 </body>
 </html>

@@ -142,11 +142,11 @@ function incrementgameClock() {
 
 function elementStyleChangeAfterSubmit(element, colorToggleClass, sizeToggleClass) {
     element.classList.toggle(colorToggleClass);
-    element.classList.toggle(sizeToggleClass);
+    // element.classList.toggle(sizeToggleClass);
     
     setTimeout(() => {
         element.classList.toggle(colorToggleClass);
-        element.classList.toggle(sizeToggleClass);
+        // element.classList.toggle(sizeToggleClass);
     }, 1000);
 }
 
