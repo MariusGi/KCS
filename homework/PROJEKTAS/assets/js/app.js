@@ -18,7 +18,7 @@ const exerciseWrapper    = document.querySelector('.exercise-content-wrapper');
 const gameScoreWrapper   = document.querySelector('.game-score-wrapper');
 
 const timeIncrement      = 3;
-const stopWatchStartingTime = 30;
+const stopWatchStartingTime = 5;
 
 let stopWatchTime;
 let scoreValue = 0;
@@ -40,12 +40,12 @@ submitResultBtn.addEventListener('click', () => {
 
     if(! isResultValid) {
         scoreValue--;
-        elementStyleChangeAfterSubmit(score, 'color-red', 'font-size-40');
+        elementStyleChangeAfterSubmit(score, 'color-red');
     } else {
         scoreValue++;
-        elementStyleChangeAfterSubmit(score, 'color-green', 'font-size-40');
+        elementStyleChangeAfterSubmit(score, 'color-green');
         incrementgameClock();
-        elementStyleChangeAfterSubmit(gameClock, 'color-green', 'font-size-40');
+        elementStyleChangeAfterSubmit(gameClock, 'color-green');
     }
 
     score.innerHTML = scoreValue;
@@ -54,13 +54,13 @@ submitResultBtn.addEventListener('click', () => {
 
 resultInput.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
-        // event.preventDefault();
         submitResultBtn.click();
     }
 });
 
 endTimeIndicator.addEventListener('click', () => {
     stopGame();
+    sendDataToPHPFile();
 });
 
 
@@ -140,13 +140,11 @@ function incrementgameClock() {
     stopWatchTime += timeIncrement;
 }
 
-function elementStyleChangeAfterSubmit(element, colorToggleClass, sizeToggleClass) {
+function elementStyleChangeAfterSubmit(element, colorToggleClass) {
     element.classList.toggle(colorToggleClass);
-    // element.classList.toggle(sizeToggleClass);
     
     setTimeout(() => {
         element.classList.toggle(colorToggleClass);
-        // element.classList.toggle(sizeToggleClass);
     }, 1000);
 }
 
@@ -164,4 +162,15 @@ function stopGame() {
     gameRulesWrapper.classList.remove('d-none');
     lastScoreVal.innerHTML = scoreValue;
     lastScoreheading.classList.remove('d-none');
+}
+
+function sendDataToPHPFile() {
+    const xhr = new XMLHttpRequest();
+    const jsonObjToSend = {
+        score: scoreValue
+    };
+    const jsonStringToSend = JSON.stringify(jsonObjToSend);
+        xhr.open('POST', 'index.php');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(jsonStringToSend);
 }
