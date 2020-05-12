@@ -1,32 +1,8 @@
 <?php
     include './includes/autoloader.inc.php';
-
-    $xhrRequest = file_get_contents('php://input');
-
-    if(!empty($xhrRequest))
-    {
-        $object = json_decode($xhrRequest, true);
-        
-        $query = new Query();
-        $score = $query->checkIfScoreExistsForUser($object['score'], $_COOKIE['username']);
-
-        if ($score === false)
-        {
-            // add a score to db
-            $query->addNewScore($object['score']);
-            exit();
-        }
-
-        if ($object['score'] < $score)
-        {
-            exit();
-        }
-
-        $query->updateNewScore($object['score']);
-        exit();
-    }
     
-
+    $pageTitle = 'Game';
+    
     if (isset($_POST['username']))
     {
         $userForm = new UserForm();
@@ -70,28 +46,45 @@
         
         // display error that username already exists
     }
+    
+
+    $xhrRequest = file_get_contents('php://input');
+
+    if(!empty($xhrRequest))
+    {
+        $object = json_decode($xhrRequest, true);
+        
+        $query = new Query();
+        $score = $query->checkIfScoreExistsForUser($object['score'], $_COOKIE['username']);
+
+        if ($score === false)
+        {
+            // add a score to db
+            $query->addNewScore($object['score']);
+            exit();
+        }
+
+        if ($object['score'] < $score)
+        {
+            exit();
+        }
+
+        $query->updateNewScore($object['score']);
+        exit();
+    }
+    
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
-    <link href="./assets/css/reset.css" rel="stylesheet">
-    <link href="./assets/css/main.css" rel="stylesheet">
-    <link href="./assets/css/index.css" rel="stylesheet">
-</head>
+
+<?php include_once './assets/partials/header.php' ?>
+
 <body>
     <div class="container">
-        <div class="row text-align-center justify-content-center">
-            <div class="col-4 col-md-3 col-lg-2">
-                <a href="#" title="Game">Game</a>
-            </div>
-            <div class="col-4 col-md-3 col-lg-2">
-                <a href="./scoreboard.php" class="" title="Scoreboard">Scoreboard</a>
-            </div>
-        </div>
+        
+        <?php include_once './assets/partials/navbar.php' ?>
+    
         <div class="row text-align-center justify-content-center align-items-center">
             <div class="col-12">
                 <h1>Speedy calculation game</h1>
@@ -136,11 +129,9 @@
             </div>
             <div class="col-6 col-sm-3 game-score-wrapper pos-relative hidden">
                 <img src="./assets/img/vector-dartboard-1966525_960_720.png" alt="scoreboard" title="scoreboard" id="game-score-image">
-                <span class="game-score-value">1</span>
+                <span class="game-score-value"></span>
             </div>
         </div>
     </div>
 
-    <script src="./assets/js/app.js"></script>
-</body>
-</html>
+<?php include_once './assets/partials/footer.php' ?>
