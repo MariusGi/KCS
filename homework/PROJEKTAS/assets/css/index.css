@@ -1,0 +1,70 @@
+body {
+    background: url('../img/count_counting_graphic_learning_math_mathematics_nine_numbers-1535281.jpg!d.jpg') no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.menu-navbar {
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 20px;
+    padding: 0.83em;
+}
+.menu-navbar a {
+    color: black;
+}
+.menu-navbar a:hover {
+    color: white;
+}
+
+.game-score-value,
+.game-clock-value {
+    color: black;
+}
+
+.math-problem-phenom-wrapper {
+    border: 1px solid white;
+    padding: .375rem .75rem;
+}
+
+.exercise-content-wrapper > * {
+    vertical-align: middle;
+}
+
+#math-problem-result {
+    max-width: 50px;
+}
+
+#game-clock-img,
+#game-score-image {
+    height: 90px;
+}
+.game-clock-value,
+.game-score-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.game-clock-value {
+    background-color: #e2e2e2;
+}
+
+.game-score-value {
+    background-color: #28c75a;
+    border: 1px solid #28c75a;
+    border-radius: 22px;
+    padding: 6px 13px;
+}
+
+/* Media queries */
+/* xs size */
+@media (max-width: 575px) {
+    .exercise-content-wrapper {
+        order: 2;
+        margin-top: 20px;
+        padding-bottom: 0.67em;
+    }
+}

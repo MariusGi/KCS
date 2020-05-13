@@ -17,7 +17,7 @@
         
         <?php include_once './assets/partials/navbar.php' ?>
         
-        <div class="row text-align-center justify-content-center align-items-center">
+        <div class="scoreboard-content row text-align-center justify-content-center align-items-center">
             <div class="col-12">
                 <h1>Scoreboard</h1>
                 <h3>Top 20 rankings</h3>
@@ -33,13 +33,13 @@
             }
             ?>
             
-            <div class="col-1 scoreboard-usernames">
+            <div class="col-6 col-sm-4 scoreboard-usernames">
                 <p>Username</p>
                 
                 <?php echo $usernames; ?>
                 
             </div>
-            <div class="col-1 scoreboard-scores">
+            <div class="col-6 col-sm-4 scoreboard-scores">
                 <p>Score</p>
 
                 <?php echo $scores; ?>

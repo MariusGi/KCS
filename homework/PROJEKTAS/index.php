@@ -116,13 +116,15 @@
         </div>
         <div class="row exercise-wrapper text-align-center justify-content-center align-items-center">
             <div class="col-6 col-sm-3 game-clock-wrapper pos-relative hidden">
-                <img src="./assets/img/clock.png" alt="clock" title="clock" id="game-clock-img">
+                <img src="./assets/img/purzen_Clock_face_web.png" alt="clock" title="clock" id="game-clock-img">
                 <span class="game-clock-value"></span>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 exercise-content-wrapper hidden">
-                <span id="math-problem-first-number"></span>
-                <span id="math-problem-operation"></span>
-                <span id="math-problem-second-number"></span>
+                <div class="math-problem-phenom-wrapper d-inline-block">
+                    <span id="math-problem-first-number"></span>
+                    <span id="math-problem-operation"></span>
+                    <span id="math-problem-second-number"></span>
+                </div>
                 <span id="math-problem-equals-sign">=</span>
                 <input type="number" id="math-problem-result">
                 <button id="math-problem-submit" class="btn btn-success" tabindex="0">Submit</button>

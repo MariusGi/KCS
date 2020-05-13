@@ -42,7 +42,7 @@
 h1 {
     display: block;
     font-size: 2em;
-    margin-top: 0.67em;
+    margin-top: 0;
     margin-bottom: 0.67em;
     margin-left: 0;
     margin-right: 0;
@@ -212,44 +212,11 @@ input[type=number] {
     color: green ;
 }
 
-.font-size-40 {
-    font-size: 40px !important;
-}
-
-#math-problem-result {
-    max-width: 50px;
-}
-
-#game-clock-img,
-#game-score-image {
-    height: 90px;
-}
-.game-clock-value,
-.game-score-value {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-}
-
-.game-clock-value {
-    background-color: #e2e2e2;
-}
-
-.game-score-value {
-    background-color: #28c75a;
-    border: 1px solid #28c75a;
-    border-radius: 22px;
-    padding: 6px 13px;
-}
-
 /* Media queries */
 /* xs size */
 @media (max-width: 575px) {
-    .exercise-content-wrapper {
-        order: 2;
-        margin-top: 20px;
+    h1 {
+        display: none;
     }
 }
 
