@@ -1,7 +1,16 @@
 <?php
+    session_start();
+    
     include './includes/autoloader.inc.php';
     
     $pageTitle = 'Game';
+   
+    if (isset($_SESSION['message']))
+    {
+        Helper::flashMessage("Username already exists for this ip address. Automatically selected {$_COOKIE['username']}");
+        unset($_SESSION["message"]);
+        session_destroy();
+    }
     
     if (isset($_POST['username']))
     {
@@ -9,10 +18,14 @@
         $isValid = $userForm->validate($_POST['username']);
         
         // username or ip address is invalid
-        if (!$isValid) return false;
+        if (!$isValid)
+        {
+            Helper::flashMessage('Username is invalid. Please try again.');
+            goto exitIf;
+        } 
 
         $queryData = $userForm->returnQueryDataIfExistsInDb();
-        
+
         // username does not exist
         // new username can be created
         if (!$queryData)
@@ -22,57 +35,68 @@
 
             if ($query)
             {
-                // user successfully created
                 setcookie('username', $_POST['username'], time() + (86400 * 365), '/');
-                header("Location: ./");
-                exit();
+                Helper::flashMessage('User has been successfully created !');
+                goto exitIf; 
             }
             else
             {
-                // unable to create user
-                return false;
+                Helper::flashMessage('Unable to create new user. Please try again.');
+                goto exitIf;
             }
         }
 
         $isUsernameLinkedToIp = $userForm->checkIfUsernameLinkedToIp($queryData);
-        
+
         // set cookie as username is linked to current ip address
         if ($isUsernameLinkedToIp)
         {
             setcookie('username', $queryData['username'], time() + (86400 * 365), '/');
-            header("Location: ./");
-            exit();
+            $_SESSION["message"] = 1;
+            Helper::redirect('./');
+            goto exitIf;
         }
         
-        // display error that username already exists
+        Helper::flashMessage('Username already exists. Please choose different username.');
+        goto exitIf;
     }
     
 
     $xhrRequest = file_get_contents('php://input');
 
-    if(!empty($xhrRequest))
+    if (!empty($xhrRequest))
     {
         $object = json_decode($xhrRequest, true);
         
-        $query = new Query();
-        $score = $query->checkIfScoreExistsForUser($object['score'], $_COOKIE['username']);
-
-        if ($score === false)
+        if (isset($object['score'])) 
         {
-            // add a score to db
-            $query->addNewScore($object['score']);
-            exit();
-        }
+        
+            $query = new Query();
+            $score = $query->checkIfScoreExistsForUser($object['score'], $_COOKIE['username']);
 
-        if ($object['score'] < $score)
-        {
-            exit();
+            if ($score === false)
+            {
+                $query->addNewScore($object['score']);
+                // messages does not work here
+                // Helper::flashMessage('Your last score has been recorded.');
+                goto exitIf;
+            }
+            
+            // Current score is lower than top score of an user.
+            if ($object['score'] < $score)
+            {
+                goto exitIf;
+            }
+            
+            // New record score.
+            $query->updateNewScore($object['score']);
+            // messages does not work here
+            // Helper::flashMessage('Congratulations. New high score has been added !');
         }
-
-        $query->updateNewScore($object['score']);
-        exit();
     }
     
+exitIf:
+
 ?>
 
 <!DOCTYPE html>

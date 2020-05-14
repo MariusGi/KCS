@@ -18,7 +18,7 @@ const exerciseWrapper    = document.querySelector('.exercise-content-wrapper');
 const gameScoreWrapper   = document.querySelector('.game-score-wrapper');
 
 const timeIncrement      = 3;
-const stopWatchStartingTime = 30;
+const stopWatchStartingTime = 5;
 
 let stopWatchTime;
 let scoreValue = 0;
