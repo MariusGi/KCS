@@ -3,7 +3,7 @@
 class Database
 {
 
-    private $host     = 'localhost';
+    private $host     = 'localhost:3307';
     private $database = 'math_games';
     private $userName = 'root';
     private $password = '';
