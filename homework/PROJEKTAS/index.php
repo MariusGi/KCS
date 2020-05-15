@@ -7,9 +7,29 @@
    
     if (isset($_SESSION['message']))
     {
-        Helper::flashMessage("Username already exists for this ip address. Automatically selected {$_COOKIE['username']}");
-        unset($_SESSION["message"]);
-        session_destroy();
+        switch($_SESSION['message'])
+        {
+            case 'reuse username':
+                Helper::flashMessage("Username already exists for this ip address. Automatically selected {$_COOKIE['username']}");
+                unset($_SESSION["message"]);
+                session_destroy();
+                break;
+            case 'create username':
+                Helper::flashMessage('User has been successfully created !');
+                unset($_SESSION["message"]);
+                session_destroy();
+                break;
+            case 'unable to create username':
+                Helper::flashMessage('Unable to create new user. Please try again.');
+                unset($_SESSION["message"]);
+                session_destroy();
+                break;
+            case 'username already exists':
+                Helper::flashMessage('Username already exists. Please choose different username.');
+                unset($_SESSION["message"]);
+                session_destroy();
+                break;
+        }       
     }
     
     if (isset($_POST['username']))
@@ -36,12 +56,14 @@
             if ($query)
             {
                 setcookie('username', $_POST['username'], time() + (86400 * 365), '/');
-                Helper::flashMessage('User has been successfully created !');
+                $_SESSION["message"] = 'create username';
+                Helper::redirect('./');
                 goto exitIf; 
             }
             else
             {
-                Helper::flashMessage('Unable to create new user. Please try again.');
+                $_SESSION["message"] = 'unable to create username';
+                Helper::redirect('./');
                 goto exitIf;
             }
         }
@@ -52,12 +74,13 @@
         if ($isUsernameLinkedToIp)
         {
             setcookie('username', $queryData['username'], time() + (86400 * 365), '/');
-            $_SESSION["message"] = 1;
+            $_SESSION["message"] = 'reuse username';
             Helper::redirect('./');
             goto exitIf;
         }
         
-        Helper::flashMessage('Username already exists. Please choose different username.');
+        $_SESSION["message"] = 'username already exists';
+        Helper::redirect('./');
         goto exitIf;
     }
     
