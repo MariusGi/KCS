@@ -44,9 +44,9 @@ class UserForm {
 
     public function checkIfUsernameLinkedToIp(array $queryData)
     {
-        return ($queryData['username'] === $this->username)
-        ? true
-        : false;
+        return ($queryData['ip_address'] === $this->userIpAddr)
+            ? true
+            : false;
     }
 
     private function cleanString($string)

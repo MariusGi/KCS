@@ -1,0 +1,45 @@
+body {
+    background: url('../img/score.jpg') no-repeat;
+    background-size: cover;
+    color: black;
+}
+
+.menu-navbar {
+    background-color: rgba(117,167,240,0.1);
+    border: 1px solid rgba(117,167,240,0.1);
+    border-radius: 20px;
+    padding: 0.83em;
+}
+.menu-navbar a {
+    color: black;
+    font-weight: bold;
+}
+.menu-navbar a:hover {
+    opacity: 0.6;
+}
+
+.scoreboard-usernames p:first-child,
+.scoreboard-scores p:first-child {
+    font-weight: bold;
+}
+
+.scoreboard-usernames > p,
+.scoreboard-scores > p {
+    font-size: 1.17em;
+    border: 1px solid black;
+    padding: 0.375em;
+    background: white;
+}
+
+
+/* Media queries */
+/* xs size */
+@media (max-width: 575px) {
+    .scoreboard-content {
+        padding-bottom: 0.67em;
+    }
+    .scoreboard-usernames > p,
+    .scoreboard-scores > p {
+        padding: 0;
+    }
+}
